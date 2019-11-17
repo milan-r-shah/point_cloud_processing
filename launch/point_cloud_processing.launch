@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <node name="point_cloud_processing_node" pkg="point_cloud_processing" type="point_cloud_processing_node" output="screen">
+        <rosparam command="load" file="$(find point_cloud_processing)/config/point_cloud_processing.yaml"/>
+    </node>
+</launch>

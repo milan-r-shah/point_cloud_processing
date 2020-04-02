@@ -5,6 +5,11 @@
 #include <ros/ros.h>
 #include <sensor_msgs/PointCloud2.h>
 
+// PCL Specific includes
+// #include <pcl/point_cloud.h>
+#include <pcl_conversions/pcl_conversions.h>
+
+
 #define NO_OF_POINT_CLOUD 10
 
 class PointCloudProcessing
@@ -30,6 +35,18 @@ private:
 
     // flag for checking whether required number of PointCloud has been received
     bool has_point_cloud;
+
+    // PCL PointCloud2
+    pcl::PCLPointCloud2 pcl_pc2_;
+    std::vector<pcl::PCLPointCloud2> pcl_pc2_vec_;
+
+    // PCL PointCloud
+    pcl::PointCloud<pcl::PointXYZ> pcl_pc_;
+    std::vector<pcl::PointCloud<pcl::PointXYZ>> pcl_pc_vec_;
+
+    void convertInputpc2toPCLpc2();
+    void convertPCLpc2toPCLpc();
+
 };
 
 #endif

@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
 )
+find_package(PCL REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include/point_cloud_processing
@@ -17,10 +18,14 @@ catkin_package(
 include_directories(
   include/point_cloud_processing
   ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
 )
+
+add_definitions(${PCL_DEFINITIONS})
 
 add_executable(${PROJECT_NAME}_node src/point_cloud_processing.cpp src/point_cloud_processing_node.cpp)
 
 target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
+  ${PCL_LIBRARIES}
 )
